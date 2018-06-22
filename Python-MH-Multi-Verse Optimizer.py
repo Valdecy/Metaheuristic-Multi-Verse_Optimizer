@@ -88,7 +88,7 @@ def muti_verse_optimizer(universes = 5, min_values = [-5,-5], max_values = [5,5]
     
     while (count <= iterations):
         
-        print("Generation = ", count, " f(x) = ", best_universe[-1])     
+        print("Iteration = ", count, " f(x) = ", best_universe[-1])     
         
         wormhole_existence_probability = wormhole_existence_probability_min + count*((wormhole_existence_probability_max - wormhole_existence_probability_min)/iterations)
         travelling_distance_rate = 1 - (math.pow(count,1/6)/math.pow(iterations,1/6))
@@ -111,14 +111,4 @@ def target_function (variables_values = [0, 0]):
     func_value = 4*variables_values[0]**2 - 2.1*variables_values[0]**4 + (1/3)*variables_values[0]**6 + variables_values[0]*variables_values[1] - 4*variables_values[1]**2 + 4*variables_values[1]**4
     return func_value
 
-mvo = muti_verse_optimizer(universes = 50, min_values = [-5,-5], max_values = [5,5], iterations = 100)
-
-# Function to be Minimized (Rosenbrocks Valley). Solution ->  f(x) = 0; xi = 1
-def target_function(variables_values = [0, 0]):
-    func_value = 0
-    last_x = variables_values[0]
-    for i in range(1, len(variables_values)):
-        func_value = func_value + (100 * math.pow((variables_values[i] - math.pow(last_x, 2)), 2)) + math.pow(1 - last_x, 2)
-    return func_value
-
-mvo = muti_verse_optimizer(universes = 50, min_values = [-5,-5,-5,-5], max_values = [5,5,5,5], iterations = 100)
+mvo = muti_verse_optimizer(universes = 50, min_values = [-5,-5], max_values = [5,5], iterations = 150)
